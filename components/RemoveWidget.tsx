@@ -1,17 +1,25 @@
 import axios from "axios";
 
-const RemoveWidget = ({ id }) => {
-  const removeWidget = async (id: number) => {
-    const updatedWidget = await axios.delete(
-      "http://localhost:5000/widgets/" + "" + id
-    );
+interface RemoveWidgetProps {
+  id: number;
+  onRemove: () => void;
+}
+
+const RemoveWidget = ({ id, onRemove }: RemoveWidgetProps) => {
+  const removeWidget = async () => {
+    try {
+      await axios.delete("http://localhost:5000/widgets/" + "" + id);
+      onRemove();
+    } catch (error) {
+      console.error("Widget Error:", error);
+    }
   };
 
   return (
     <>
       <button
         className="bg-white text-black mt-10 mb-5 py-2 px-8 rounded-full"
-        onClick={() => removeWidget(id)}
+        onClick={removeWidget}
       >
         Delete
       </button>

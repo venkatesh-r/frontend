@@ -1,11 +1,9 @@
-import Location from "@/components/Location";
-import Widgets from "@/components/Widgets";
+import ParentWidget from "@/components/ParentWidget";
 
 export default function Home() {
   return (
     <div>
-      <Location />
-      <Widgets />
+      <ParentWidget />
     </div>
   );
 }
