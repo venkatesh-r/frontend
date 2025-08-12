@@ -1,4 +1,15 @@
 import RemoveWidget from "./RemoveWidget";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faCloudSun,
+  faSun,
+  faCloud,
+  faSmog,
+  faBolt,
+  faSnowflake,
+  faCloudRain,
+  faWind,
+} from "@fortawesome/free-solid-svg-icons";
 
 interface WeatherData {
   main: {
@@ -22,13 +33,28 @@ interface DisplayWidgetProps {
 }
 
 const DisplayWidget = ({ widgets, loadWidget }: DisplayWidgetProps) => {
+  const cloudsGroup = [
+    "few clouds",
+    "scattered clouds",
+    "broken clouds",
+    "overcast clouds",
+  ];
+  const rainGroup = [
+    "shower rain",
+    "rain",
+    "moderate rain",
+    "heavy intensity rain",
+    "light rain",
+  ];
+  const mistGroup = ["mist", "haze", "fog"];
+  const snowGroup = ["snow", "light snow"];
   return (
     <>
       <div className="flex mt-15 mr-2 flex-wrap px-10 justify-center mb-20">
         {widgets.map((item) => (
           <div
             key={item._id}
-            className="relative flex flex-col my-6 bg-[#52B7FB] shadow-sm border border-slate-200 rounded-lg w-70 mr-10 text-center"
+            className="relative flex flex-col my-6 shadow-xl/30 bg-gradient-to-b from-cyan-400 to-blue-500 shadow-sm border border-slate-200 rounded-lg w-70 mr-10 text-center"
           >
             <div className="px-4 py-4 text-white">
               <div className="text-2xl my-2 py-4 text-center ">
@@ -40,6 +66,62 @@ const DisplayWidget = ({ widgets, loadWidget }: DisplayWidgetProps) => {
                 </p>
                 <p className="text-xl text-center my-1">
                   {item?.weather?.weather[0].description}
+                </p>
+                <p className="mt-5 mb-5">
+                  {item?.weather?.weather[0].description === "clear sky" && (
+                    <FontAwesomeIcon
+                      icon={faCloudSun}
+                      style={{ fontSize: 80, color: "white" }}
+                    ></FontAwesomeIcon>
+                  )}
+
+                  {item?.weather?.weather[0].description === "" && (
+                    <FontAwesomeIcon
+                      icon={faCloud}
+                      style={{ fontSize: 80, color: "white" }}
+                    ></FontAwesomeIcon>
+                  )}
+
+                  {item?.weather?.weather[0].description === "thunderstorm" && (
+                    <FontAwesomeIcon
+                      icon={faBolt}
+                      style={{ fontSize: 80, color: "white" }}
+                    ></FontAwesomeIcon>
+                  )}
+
+                  {rainGroup.includes(
+                    item?.weather?.weather[0].description
+                  ) && (
+                    <FontAwesomeIcon
+                      icon={faCloudRain}
+                      style={{ fontSize: 80, color: "white" }}
+                    ></FontAwesomeIcon>
+                  )}
+
+                  {cloudsGroup.includes(
+                    item?.weather?.weather[0].description
+                  ) && (
+                    <FontAwesomeIcon
+                      icon={faCloud}
+                      style={{ fontSize: 80, color: "white" }}
+                    ></FontAwesomeIcon>
+                  )}
+                  {mistGroup.includes(
+                    item?.weather?.weather[0].description
+                  ) && (
+                    <FontAwesomeIcon
+                      icon={faSmog}
+                      style={{ fontSize: 80, color: "white" }}
+                    ></FontAwesomeIcon>
+                  )}
+                  {snowGroup.includes(
+                    item?.weather?.weather[0].description
+                  ) && (
+                    <FontAwesomeIcon
+                      icon={faSnowflake}
+                      style={{ fontSize: 80, color: "white" }}
+                    ></FontAwesomeIcon>
+                  )}
                 </p>
                 <p className="mt-7">
                   <span className="text-lg">Minimum Temperature:</span>{" "}

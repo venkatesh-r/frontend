@@ -18,7 +18,7 @@ const RemoveWidget = ({ id, onRemove }: RemoveWidgetProps) => {
   return (
     <>
       <button
-        className="bg-white text-black mt-10 mb-5 py-2 px-8 rounded-full"
+        className="bg-white shadow-lg text-black mt-10 mb-5 py-2 px-8 rounded-full cursor-pointer"
         onClick={removeWidget}
       >
         Delete

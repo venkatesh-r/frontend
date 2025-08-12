@@ -33,7 +33,8 @@ const Location = ({ refreshWidget }) => {
   };
 
   return (
-    <div className="">
+    <>
+      <h1 className="text-center text-6xl mt-10 mb-5">Weather App</h1>
       <div className="flex justify-center mt-20">
         <form onSubmit={addWidget}>
           <div className="flex flex-row space-x-4 items-center">
@@ -42,10 +43,11 @@ const Location = ({ refreshWidget }) => {
               type="text"
               value={location}
               onChange={(e) => setLocation(e.target.value)}
+              data-testid="searchInput"
             />
 
             <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full ml-5">
-              Submit
+              Add City
             </button>
           </div>
         </form>
@@ -58,7 +60,7 @@ const Location = ({ refreshWidget }) => {
           </p>
         )}
       </div>
-    </div>
+    </>
   );
 };
 

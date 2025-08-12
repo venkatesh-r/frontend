@@ -26,6 +26,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <script
+        src="https://kit.fontawesome.com/yourcode.js"
+        async
+        defer
+      ></script>
       <body className="flex flex-col min-h-screen">
         <Header />
         <main className="flex-grow">{children}</main>
